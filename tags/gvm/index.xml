@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>To Be Engineered </title>
+    <link>http://k242hd.github.io/tags/gvm/</link>
+    <language>en-us</language>
+    <author>t_murano</author>
+    <rights>(C) 2015</rights>
+    <updated>2015-09-07 00:00:00 &#43;0000 UTC</updated>
+
+    
+      
+        <item>
+          <title>gvmでgo1.5をインストールする</title>
+          <link>http://k242hd.github.io/blog/2015/09/07/gvm-install-go1.5/</link>
+          <pubDate>Mon, 07 Sep 2015 00:00:00 UTC</pubDate>
+          <author>t_murano</author>
+          <guid>http://k242hd.github.io/blog/2015/09/07/gvm-install-go1.5/</guid>
+          <description>
+
+&lt;p&gt;Go1.5をgvmで入れようとしたらちょっと躓いた話&lt;/p&gt;
+
+&lt;h2 id=&#34;使うもの:9e8bceb15f8a77f27437921e5e38804a&#34;&gt;使うもの&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/moovweb/gvm&#34;&gt;gvm(Golang Version Manager)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;さっそく入れてみる:9e8bceb15f8a77f27437921e5e38804a&#34;&gt;さっそく入れてみる&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ gvm install go1.5
+Installing go1.5...
+ * Compiling...
+ERROR: Failed to compile. Check the logs at /Users/t_murano/.gvm/logs/go-go1.5-compile.log
+ERROR: Failed to use installed version
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&amp;hellip;あれ？なんかコンパイルに失敗してるし。&lt;br /&gt;
+とりあえずログを見てみる。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ less /Users/t_murano/.gvm/logs/go-go1.5-compile.log
+##### Building Go bootstrap tool.
+cmd/dist
+ERROR: Cannot find /Users/t_murano/go1.4/bin/go.
+Set $GOROOT_BOOTSTRAP to a working Go tree &amp;gt;= Go 1.4.
+./make.bash: line 121: /Users/t_murano/go1.4/bin/go: No such file or directory
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;あ、そういえばGo1.5からBootstrap化されたんだっけ。&lt;br /&gt;
+Bootstrap用に必要なGo(1.4以上)のパスを設定する環境変数があるので、とりあえずgvmで入れてあったGo1.4.2を指定してみる。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ export GOROOT_BOOTSTRAP=/User/t_murano/.gvm/gos/go1.4.2
+$ gvm install go1.5
+Installing go1.5...
+ * Compiling...
+$ gvm list
+
+gvm gos (installed)
+
+=&amp;gt; go1.4.2
+   go1.5
+   system
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;お、入った。&lt;br /&gt;
+別にgvm関係ないんだけど、GOROOT_BOOTSTRAPっていう環境変数を設定しないとGo1.5をコンパイル出来ないという話でした。&lt;/p&gt;
+</description>
+        </item>
+      
+    
+
+  </channel>
+</rss>

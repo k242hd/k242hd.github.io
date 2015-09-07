@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>To Be Engineered </title>
+    <link>http://k242hd.github.io/</link>
+    <language>en-us</language>
+    <author>t_murano</author>
+    <rights>(C) 2015</rights>
+    <updated>2015-09-07 00:00:00 &#43;0000 UTC</updated>
+
+    
+      
+        <item>
+          <title>gvmでgo1.5をインストールする</title>
+          <link>http://k242hd.github.io/blog/2015/09/07/gvm-install-go1.5/</link>
+          <pubDate>Mon, 07 Sep 2015 00:00:00 UTC</pubDate>
+          <author>t_murano</author>
+          <guid>http://k242hd.github.io/blog/2015/09/07/gvm-install-go1.5/</guid>
+          <description>
+
+&lt;p&gt;Go1.5をgvmで入れようとしたらちょっと躓いた話&lt;/p&gt;
+
+&lt;h2 id=&#34;使うもの:9e8bceb15f8a77f27437921e5e38804a&#34;&gt;使うもの&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/moovweb/gvm&#34;&gt;gvm(Golang Version Manager)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;さっそく入れてみる:9e8bceb15f8a77f27437921e5e38804a&#34;&gt;さっそく入れてみる&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ gvm install go1.5
+Installing go1.5...
+ * Compiling...
+ERROR: Failed to compile. Check the logs at /Users/t_murano/.gvm/logs/go-go1.5-compile.log
+ERROR: Failed to use installed version
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&amp;hellip;あれ？なんかコンパイルに失敗してるし。&lt;br /&gt;
+とりあえずログを見てみる。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ less /Users/t_murano/.gvm/logs/go-go1.5-compile.log
+##### Building Go bootstrap tool.
+cmd/dist
+ERROR: Cannot find /Users/t_murano/go1.4/bin/go.
+Set $GOROOT_BOOTSTRAP to a working Go tree &amp;gt;= Go 1.4.
+./make.bash: line 121: /Users/t_murano/go1.4/bin/go: No such file or directory
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;あ、そういえばGo1.5からBootstrap化されたんだっけ。&lt;br /&gt;
+Bootstrap用に必要なGo(1.4以上)のパスを設定する環境変数があるので、とりあえずgvmで入れてあったGo1.4.2を指定してみる。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ export GOROOT_BOOTSTRAP=/User/t_murano/.gvm/gos/go1.4.2
+$ gvm install go1.5
+Installing go1.5...
+ * Compiling...
+$ gvm list
+
+gvm gos (installed)
+
+=&amp;gt; go1.4.2
+   go1.5
+   system
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;お、入った。&lt;br /&gt;
+別にgvm関係ないんだけど、GOROOT_BOOTSTRAPっていう環境変数を設定しないとGo1.5をコンパイル出来ないという話でした。&lt;/p&gt;
+</description>
+        </item>
+      
+    
+      
+        <item>
+          <title>YAPC::Asia Tokyo 2015に参加した話</title>
+          <link>http://k242hd.github.io/blog/2015/08/25/yapc-paticipated/</link>
+          <pubDate>Tue, 25 Aug 2015 00:00:00 UTC</pubDate>
+          <author>t_murano</author>
+          <guid>http://k242hd.github.io/blog/2015/08/25/yapc-paticipated/</guid>
+          <description>
+
+&lt;p&gt;YAPC::Asiaに参加してきたのですが、どうやらブログを書くまでがYAPCとのことなのでブログ作っちゃいました。&lt;br /&gt;
+どのトークやイベントも非常に面白かったのですが、個人的に印象的だった部分だけピックアップします。&lt;/p&gt;
+
+&lt;h2 id=&#34;tbd-matz:adbbbd0e25187a7d12274b296ee1d607&#34;&gt;TBD (Matz)&lt;/h2&gt;
+
+&lt;p&gt;Rubyのパパこと&lt;a href=&#34;https://twitter.com/yukihiro_matz&#34;&gt;Matz&lt;/a&gt;のトーク&lt;br /&gt;
+まずトークの内容以前にスライド内で競争してるウサギとカメが気になって仕方なかった。&lt;br /&gt;
+&lt;a href=&#34;http://rabbit-shocker.org/&#34;&gt;Rabbit&lt;/a&gt;というプレゼンテーションツールを使用していたみたい。&lt;br /&gt;
+内容はRubyディスやStreemという開発中の言語についてなど。&lt;br /&gt;
+「絶対に型を書きたくないでござる」発言が最高に面白かった(もしかしてMatzはCharlotte観てたりするのかな？)&lt;/p&gt;
+
+&lt;h2 id=&#34;懇親会:adbbbd0e25187a7d12274b296ee1d607&#34;&gt;懇親会&lt;/h2&gt;
+
+&lt;p&gt;とにかく人が多かった。&lt;br /&gt;
+突然GMOペパボの&lt;a href=&#34;https://twitter.com/kentaro&#34;&gt;あんちぽさん&lt;/a&gt;に声をかけられたりなど、思いもよらないイベントが&amp;hellip;&lt;br /&gt;
+自分は&lt;a href=&#34;http://dandy.fm/&#34;&gt;だんごゆっけの平和な話&lt;/a&gt;というPodcastのファンだったので、勇気を出して&lt;a href=&#34;https://twitter.com/yusukebe&#34;&gt;ゆーすけべーさん&lt;/a&gt;に声を掛けてみたら快くおしゃべりに応じてくれて超ハッピー(&lt;a href=&#34;https://twitter.com/kamadango&#34;&gt;だんごさん&lt;/a&gt;は残念ながら見つけられなかった)&lt;/p&gt;
+
+&lt;h2 id=&#34;yapcあるある:adbbbd0e25187a7d12274b296ee1d607&#34;&gt;YAPCあるある&lt;/h2&gt;
+
+&lt;p&gt;先ほどのだんごゆっけのお二人が司会で、これまでのYAPC::Asiaを主催してきた方々を迎えての振り返り談義&lt;br /&gt;
+最初の拍手での入場や、&lt;a href=&#34;https://twitter.com/941&#34;&gt;941さん&lt;/a&gt;と&lt;a href=&#34;https://twitter.com/lestrrat&#34;&gt;makiさん&lt;/a&gt;のツッコミが面白かったりなど、バラエティ番組みたいなノリになってた気がする。&lt;br /&gt;
+「ACTのバグはフランスの作者の家に行って泊まって直した」のくだりは流石の&lt;a href=&#34;https://twitter.com/miyagawa&#34;&gt;miyagawaさん&lt;/a&gt;&lt;br /&gt;
+自分は初参加だったが、これまで10年間の積み重ねで今回があったと思うと感慨深いものがある。&lt;/p&gt;
+
+&lt;h2 id=&#34;profiling-optimizing-in-go:adbbbd0e25187a7d12274b296ee1d607&#34;&gt;Profiling &amp;amp; Optimizing in Go&lt;/h2&gt;
+
+&lt;p&gt;Golang開発者である&lt;a href=&#34;https://twitter.com/bradfitz&#34;&gt;Brad Fitzpatrick氏&lt;/a&gt;のトーク&lt;br /&gt;
+Camel + Gopher =&amp;gt; Campher is キモい&lt;br /&gt;
+ライブコーディングを交えつつGoのデータ構造や最適化手法を丁寧に解説していてとてもためになった。&lt;br /&gt;
+&lt;a href=&#34;https://golang.org/pkg/net/http/pprof/&#34;&gt;pprof&lt;/a&gt;などのツールを全く知らなかったので&lt;a href=&#34;https://github.com/bradfitz/talk-yapc-asia-2015&#34;&gt;デモ用の資料&lt;/a&gt;で復習しよう&lt;/p&gt;
+
+&lt;h2 id=&#34;まとめ:adbbbd0e25187a7d12274b296ee1d607&#34;&gt;まとめ&lt;/h2&gt;
+
+&lt;p&gt;そんな感じでとっても充実した2日間でした。&lt;br /&gt;
+参加者の方々とまた何かしらのイベントで会えたらいいなー、と思いつつこれで私のYAPCは終わりとなります。&lt;br /&gt;
+スタッフやスピーカーや参加者の皆様方、ありがとうございました！&lt;/p&gt;
+</description>
+        </item>
+      
+    
+
+  </channel>
+</rss>
